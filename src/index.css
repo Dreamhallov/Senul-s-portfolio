@@ -1,0 +1,99 @@
+@import "tailwindcss";
+
+:root {
+  --bg-canvas: #F4F5F0;
+  --surface-card: #FFFFFF;
+  --surface-muted: #EAECE4;
+  --text-ink: #1A1A1A;
+  --text-stone: #5A5C56;
+  --border-hairline: rgba(26, 26, 26, 0.11);
+  --border-hairline-strong: rgba(26, 26, 26, 0.24);
+  --accent-cobalt: #2563EB;
+}
+
+@theme {
+  --font-display: "Space Grotesk", sans-serif;
+  --font-sans: "DM Sans", sans-serif;
+}
+
+html {
+  background-color: var(--bg-canvas);
+  color: var(--text-ink);
+  font-family: var(--font-sans);
+  scroll-behavior: auto;
+  overflow-x: clip;
+}
+
+body {
+  background-color: var(--bg-canvas);
+  color: var(--text-ink);
+  font-family: var(--font-sans);
+  overflow-x: clip;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.font-display {
+  font-family: var(--font-display);
+}
+
+button,
+input,
+textarea,
+select,
+option,
+.font-sans {
+  font-family: var(--font-sans);
+}
+
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Custom cursor active on pointer-fine desktop screens only */
+@media (hover: hover) and (pointer: fine) and (min-width: 768px) {
+  body.has-custom-cursor,
+  body.has-custom-cursor a,
+  body.has-custom-cursor button {
+    cursor: none;
+  }
+}
+
+/* Editorial link underline draw */
+.editorial-underline {
+  position: relative;
+  display: inline-block;
+}
+
+.editorial-underline::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 100%;
+  height: 1px;
+  background-color: currentColor;
+  transform: scaleX(0);
+  transform-origin: right center;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.editorial-underline:hover::after,
+.editorial-underline:focus-visible::after {
+  transform: scaleX(1);
+  transform-origin: left center;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
